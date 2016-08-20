@@ -51,7 +51,9 @@ public class PlayerController: MonoBehaviour // ':' means 'inheriting from'
         {
             primaryFire.setNextFire(Time.time + primaryFire.fireRate);
 
-            GameObject fire = Instantiate(primaryProjectile, primaryFireSpawn.position, primaryFireSpawn.rotation) as GameObject; 
+            GameObject fire = Instantiate(primaryProjectile, primaryFireSpawn.position, primaryFireSpawn.rotation) as GameObject;
+            fire.tag = "Player";
+
             //Instantiate returns a copy of an original object.  (essentially an emitter)
 
         }
