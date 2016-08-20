@@ -8,7 +8,7 @@ public class Boundary
 
 }
 [System.Serializable]
-public class Firing
+public class PlayerFire
 {
     public float fireRate;          //how often we can fire
 
@@ -23,7 +23,6 @@ public class Firing
         this.nextFire = next;
     }
 }
-
 public class PlayerController: MonoBehaviour // ':' means 'inheriting from'
 {
     public GameObject primaryProjectile; //use the Bullet 
@@ -31,7 +30,7 @@ public class PlayerController: MonoBehaviour // ':' means 'inheriting from'
 
 
     public Boundary bounds; //use the class we defined here!
-    public Firing primaryFire; //use the class we defined here!
+    public PlayerFire primaryFire; //use the class we defined here!
 
     private Rigidbody rb; //we'll use the rigid body for the velocity
     private Quaternion endRotation; //Store target orientation for banking here!

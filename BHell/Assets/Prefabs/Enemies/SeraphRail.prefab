@@ -110,8 +110,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11, y: 0.8, z: 2.8}
-  m_Center: {x: 0, y: 0.2, z: 0}
+  m_Size: {x: 10.6, y: 0.8, z: 1.7}
+  m_Center: {x: 0, y: 0.2, z: -0.4}
 --- !u!95 &95000013815099392
 Animator:
   serializedVersion: 3
@@ -152,6 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b9a60c68da9a74b972387ceca17ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primaryProjectile: {fileID: 0}
+  primaryFireSpawn: {fileID: 0}
+  primaryFire:
+    aimTime: 0
+    fireCharge: 0
+    fireWait: 0
 --- !u!136 &136000011187001158
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -184,7 +184,7 @@ MonoBehaviour:
   spawnWait: 0.1
   startWait: 1
   waveWait: 2
-  maxHazardSpawnCount: 5
+  maxHazardSpawnCount: 1
 --- !u!4 &136942227
 Transform:
   m_ObjectHideFlags: 0

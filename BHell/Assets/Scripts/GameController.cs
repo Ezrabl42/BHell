@@ -21,25 +21,27 @@ public class GameController : MonoBehaviour
    
 	// Use this for initialization
 	void Start ()
-    {
-        //while(!Input.GetButton("Cancel")) //default set to Esc key
-    
-        {
-            StartCoroutine( SpawnWaves()); //spawning is a coroutine
-          
-        }
+    {    
+   
+            StartCoroutine( SpawnWaves()); //spawning is a coroutine      
+        
 	}
+    void Update()
+    {
+
+    }
 
     IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds(startWait);
-        while (true)
+        while (!Input.GetButton("Cancel"))
         {
             
-            int hazardSpawnCount = Random.Range(0, maxHazardSpawnCount);
+            int hazardSpawnCount = Random.Range(1, maxHazardSpawnCount);
+       
             for (int i = 0; i < hazardSpawnCount; i++)
             {
-                Vector3 spawnPosition = new Vector3(Random.Range(-28, 28), 0, Random.Range(23, 83));  //some defined spawn area
+                Vector3 spawnPosition = new Vector3(Random.Range(-28, 28), 0, Random.Range(33, 83));  //some defined spawn area
                 Quaternion spawnRotation = hazard.transform.rotation;  //whatever the set rotation was 
                 Instantiate(hazard, spawnPosition, spawnRotation);
                 yield return new WaitForSeconds(spawnWait);  //wait between each spawn
