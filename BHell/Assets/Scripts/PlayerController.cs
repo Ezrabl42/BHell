@@ -23,6 +23,7 @@ public class PlayerFire
         this.nextFire = next;
     }
 }
+
 public class PlayerController: MonoBehaviour // ':' means 'inheriting from'
 {
     public GameObject primaryProjectile; //use the Bullet 

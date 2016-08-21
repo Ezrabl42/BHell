@@ -18,6 +18,11 @@ public class DestroyByContact : MonoBehaviour {
         Destroy(gameObject);
         
     }
+    void OnRayCastReceived()
+    {
+        Instantiate(explosion, transform.position, transform.rotation); //make explosion
+        Destroy(gameObject);
+    }
 
 
 }
