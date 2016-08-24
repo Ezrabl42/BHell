@@ -70,7 +70,7 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
         if (Time.time < stopAiming)
         {
             StopCoroutine("RotateIn"); //we don't have to do this anymore
-            transform.rotation = Quaternion.Lerp(transform.rotation, aimRotation, Time.deltaTime / aimTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, aimRotation, 4* Time.deltaTime / aimTime);
 
         }
 

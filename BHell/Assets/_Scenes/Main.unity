@@ -198,58 +198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1001 &141923295
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000011222243640, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011222243640, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011222243640, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011222243640, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011222243640, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011222243640, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011222243640, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011222243640, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 120000011081533880, guid: c5b67d06ad1bab24fbd168430ab38f3d,
-        type: 2}
-      propertyPath: m_Parameters.startWidth
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 120000011081533880, guid: c5b67d06ad1bab24fbd168430ab38f3d,
-        type: 2}
-      propertyPath: m_Parameters.endWidth
-      value: 1.3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c5b67d06ad1bab24fbd168430ab38f3d, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &616316841
 GameObject:
   m_ObjectHideFlags: 0
