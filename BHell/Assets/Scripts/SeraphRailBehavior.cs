@@ -10,21 +10,22 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
 {
     //private variables
     private Rigidbody rb;              //rigidbody
-    private Quaternion setupOrientation; //enemy will "rotate in"
+    private Quaternion setupOrientation; //enemy will "rotate in" until it matches this
     private Quaternion aimRotation; //hold a target rotation
     private Transform targetTransform;
+
     //flag for proper setup
     private bool readyUp = false;
+
     //aiming variables
     private float stopAiming = 0.0f; //stop aiming at this time
     private float stopCharging = 0.0f; //stop charging at this time
     public float aimTime;  //how long we can aim
+
     //ray casting
     private LineRenderer line;
+
     // Use this for initialization
-
-
-
     void Start()
     {
         //get rigidbody ready, find the player, set up the transforms to face
@@ -70,7 +71,7 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
         if (Time.time < stopAiming)
         {
             StopCoroutine("RotateIn"); //we don't have to do this anymore
-            transform.rotation = Quaternion.Lerp(transform.rotation, aimRotation, 4* Time.deltaTime / aimTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, aimRotation,  Time.deltaTime / aimTime);
 
         }
 
