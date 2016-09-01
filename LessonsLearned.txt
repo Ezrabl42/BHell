@@ -1,0 +1,14 @@
+8/31/2016
+----------------------
+P. Model rotated the wrong way when imported from Blender into Unity
+A. Set the proper orientation of the object in Blender.  Next, select the X component of the Rotation in the Transform menu (right side of viewer by default)
+and set it to -90 degrees.  Then, press ctrl+A and apply Rotation.  Now the y axis (green axis in viewer) should stick out of the object's top.  Now select the X
+component of the Rotation again and set it to +90 degrees.  Then save and import into Unity.  Unity will rotate the object -90 degrees to meet the Y-axis,
+which is considered the up and down direction there.  
+
+Doing this right means you successfully "tricked" Unity into righting your model.  
+
+P. Model is not scaling properly inside Unity/exhibiting weird behavior when trying to resize
+A. Unity looks at the Scale property of the model, not the dimensions themselves.  Edit the dimensions as you wish inside Blender.  Then, press ctrl+A and apply Scale.
+Finally, save and import into Unity.  The Dimensions inside Blender are now considered as the Unit Scale of the object.  Following this method, if the Y-dimension length 
+of your model was 7.5 Blender Units, then scaling it by 2 in Unity would return 15 Blender Units.
