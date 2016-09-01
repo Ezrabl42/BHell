@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Turret
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 6, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -150,7 +150,7 @@ Material:
       second: 0.5
     - first:
         name: _Shininess
-      second: 0.03
+      second: 0.0430001
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -171,11 +171,14 @@ Material:
         name: _Color
       second: {r: 1, g: 0, b: 0.02794218, a: 1}
     - first:
+        name: _Emission
+      second: {r: 0, g: 0, b: 0, a: 0}
+    - first:
         name: _EmissionColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 0.3, g: 0.3, b: 0.3, a: 1}
     - first:
         name: _ReflectColor
       second: {r: 1, g: 1, b: 1, a: 0.5}
     - first:
         name: _SpecColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 0.89705884, g: 0.5871823, b: 0.032980084, a: 1}
