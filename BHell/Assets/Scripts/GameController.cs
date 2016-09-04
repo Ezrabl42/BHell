@@ -18,13 +18,17 @@ public class GameController : MonoBehaviour
 
     public int maxHazardSpawnCount; //maximum number of hazards per wave  
 
+    public GUIText scoreText; //score text
+    public int score;   //actual score
+    //public float multiplier << :D
+
    
 	// Use this for initialization
 	void Start ()
-    {    
-   
-            StartCoroutine( SpawnWaves()); //spawning is a coroutine      
-        
+    {
+      score = 0; //the score is 0;
+      UpdateScore();
+      StartCoroutine( SpawnWaves()); //spawning is a coroutine                  
 	}
     void Update()
     {
@@ -49,4 +53,15 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(waveWait);
         }
     }
+
+    protected void UpdateScore()
+    {
+        scoreText.text = "Score: " + score;
+    }
+    public void AddScore(int addedScore)
+    {
+        score += addedScore;
+        UpdateScore();
+    }
+
 }

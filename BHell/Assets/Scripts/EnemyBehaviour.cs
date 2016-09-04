@@ -18,12 +18,31 @@ public class Shooting //sibling class?????????????????????????
         this.nextFire = next;
     }
 }
+
+[System.Serializable]
+public class Health //BARS ????????????
+{
+
+}
+
+[System.Serializable]
+public class Bounty
+{
+    public int pointValue; //score
+
+    public void AwardBounty()
+    {
+        Debug.Log("award bounty called");
+    }
+
+}
 public class EnemyBehaviour : MonoBehaviour
 {
     public GameObject primaryProjectile;
     public Transform primaryFireSpawn;
     public Shooting primaryFire;
     protected GameObject target;
+    public Bounty bounty;
 
 
 }

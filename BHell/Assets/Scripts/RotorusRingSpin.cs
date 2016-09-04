@@ -9,7 +9,7 @@ public class RotorusRingSpin : MonoBehaviour {
 
     void Update()
     {
-        transform.Rotate(new Vector3(1, 1, 1) * rotateSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(1.3f, 1, 1.7f) * rotateSpeed * Time.deltaTime);
         //turn <rotateSpeed> degrees each second
 
     }

@@ -8,42 +8,47 @@ using System.Collections;
 
 public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
 {
-    //private variables
-    private Rigidbody rb;              //rigidbody
-    private Quaternion setupOrientation; //enemy will "rotate in" until it matches this
-    private Quaternion aimRotation; //hold a target rotation
+    //transformation variables
+    private Rigidbody rb;                   //rigidbody
+    private Quaternion setupOrientation;    //enemy will "rotate in" until it matches this
+    private Quaternion aimRotation;         //hold a target rotation
     private Transform targetTransform;
 
     //flag for proper setup
     private bool readyUp = false;
 
     //aiming variables
-    private float stopAiming = 0.0f; //stop aiming at this time
-    private float stopCharging = 0.0f; //stop charging at this time
-    public float aimTime;  //how long we can aim
+    private float stopAiming = 0.0f;        //stop aiming at this time
+    private float stopCharging = 0.0f;      //stop charging at this time
+    public float aimTime;                   //how long we can aim
 
     //ray casting
     private LineRenderer line;
+
+    //***************************************************************************************************//
+
 
     // Use this for initialization
     void Start()
     {
         //get rigidbody ready, find the player, set up the transforms to face
         rb = GetComponent<Rigidbody>();
-        target = GameObject.Find("PlayerShip");  //we will never aim at something that isn't the player
-        targetTransform = target.transform;
+        target = GameObject.Find("PlayerShip");  //Seraphs will never aim at something that isn't the player
+        targetTransform = target.transform;     
 
         line = GetComponentInChildren<LineRenderer>();
-        line.enabled = false;
+        line.enabled = false;                    //No firing yet
 
 
-        //determine our desired orientation
+        //determine our desired orientation and turn until facing it
         setupOrientation = Quaternion.Euler(0, 180, 0);
-        StartCoroutine(RotateIn(setupOrientation)); //start doing this
+        StartCoroutine(RotateIn(setupOrientation));
 
-        //find the Quaternion that will face the player
+
+        //find the Quaternion that will face the player for the first time
         aimRotation = Quaternion.LookRotation(targetTransform.position - transform.position);
-        
+
+        StopCoroutine("RotateIn"); //we don't have to do this anymore once it's finished
     }
 
     // Update is called once per frame
@@ -69,17 +74,12 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
     void FireCycle() //deals with the firing cycle (aiming, charging, firing)
     {
         if (Time.time < stopAiming)
-        {
-            StopCoroutine("RotateIn"); //we don't have to do this anymore
+        {          
             transform.rotation = Quaternion.Lerp(transform.rotation, aimRotation,  Time.deltaTime / aimTime);
-
         }
 
         else if (Time.time >= stopAiming && Time.time < stopCharging)
         {
-
-
-
         }
         else if (Time.time >= stopCharging && Time.time < primaryFire.getNextFire())
         {
@@ -90,12 +90,10 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
             RaycastHit hit; //holds what ever was impacted
             line.SetPosition(0, ray.origin); //first end of the line
 
-            if (Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "Player")
-            {
-                
+            if (Physics.Raycast(ray, out hit, 100) && hit.collider.name == "PlayerShip")
+            {     
                 line.SetPosition(1, hit.point);
-                hit.collider.gameObject.SendMessage("OnRayCastReceived");
-              
+                hit.collider.gameObject.SendMessage("OnRayCastReceived");             
             }
 
             else
@@ -110,7 +108,7 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
             stopCharging = stopAiming + primaryFire.fireWait;
             primaryFire.setNextFire(stopCharging + primaryFire.fireDuration);  //Total time alloted is aimTime + fireDuration + fireWait
 
-            aimRotation = Quaternion.LookRotation(targetTransform.position - transform.position); //create aiming Rotation
+            aimRotation = Quaternion.LookRotation(targetTransform.position - transform.position); //create a new aiming Rotation
         }
     }
 }
