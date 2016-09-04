@@ -188,6 +188,8 @@ MonoBehaviour:
     fireDuration: 0.5
     fireRate: 0
     fireWait: 0.5
+  bounty:
+    pointValue: 100
   aimTime: 0.5
 --- !u!120 &120000010507741542
 LineRenderer:

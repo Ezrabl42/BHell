@@ -32,7 +32,8 @@ public class Bounty
 
     public void AwardBounty()
     {
-        Debug.Log("award bounty called");
+        GameObject gameController = GameObject.Find("GameController");
+        gameController.SendMessage("AddScore", pointValue);
     }
 
 }

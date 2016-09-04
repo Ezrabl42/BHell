@@ -18,9 +18,10 @@ public class DestroyByContact : MonoBehaviour {
 
 
         Instantiate(explosion, transform.position, transform.rotation); //make explosion
-        if(myCollider.tag == "Enemy") //check if destroyed object is Enemy Object
+        if(gameObject.tag == "Enemy") //check if destroyed object is Enemy Object
         {
-            myCollider.gameObject.SendMessage("AwardBounty");
+            EnemyBehaviour EBehaviour = GetComponent<EnemyBehaviour>();
+            EBehaviour.bounty.AwardBounty(); //tell the Eneemy to award points
         }
 
         Destroy(other.gameObject);
