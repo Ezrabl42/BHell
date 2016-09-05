@@ -7,8 +7,16 @@ component of the Rotation again and set it to +90 degrees.  Then save and import
 which is considered the up and down direction there.  
 
 Doing this right means you successfully "tricked" Unity into righting your model.  
-
+***
 P. Model is not scaling properly inside Unity/exhibiting weird behavior when trying to resize
 A. Unity looks at the Scale property of the model, not the dimensions themselves.  Edit the dimensions as you wish inside Blender.  Then, press ctrl+A and apply Scale.
 Finally, save and import into Unity.  The Dimensions inside Blender are now considered as the Unit Scale of the object.  Following this method, if the Y-dimension length 
 of your model was 7.5 Blender Units, then scaling it by 2 in Unity would return 15 Blender Units.
+***
+P. SendMessage is giving me a hard time
+A. If you're using SendMessage, you must specify a GameObject to send the Message to so it can be compared with the behaviours attached to that object.  Use GameObject.Find or
+GameObject.FindWithTag with the desired object.  You should always manage your tags!!!  Also, don't use SendMessage for another component that's within the same GameObject!
+(I know, duh)  Use GetComponent instead.
+***
+P. Stand Alone version of the game is not sized correctly
+A. Use Screen.SetResolution in the Start() of a script that executes at the beginning.  All I can say for now.

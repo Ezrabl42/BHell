@@ -32,7 +32,11 @@ public class Bounty
 
     public void AwardBounty()
     {
-        GameObject gameController = GameObject.Find("GameController");
+        GameObject gameController = GameObject.Find("GameController"); //find by name
+        if(gameController == null)
+        {
+            Debug.Log("Error: Cannot find GameObject 'GameController'");
+        }
         gameController.SendMessage("AddScore", pointValue);
     }
 

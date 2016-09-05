@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SelfRemoval : MonoBehaviour {
+public class SelfRemoval : MonoBehaviour
+{
 
     public float deathTime; //set the timer     
 

@@ -9,11 +9,9 @@ using System.Collections;
 public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
 {
     //transformation variables
-    private Rigidbody rb;                   //rigidbody
     private Quaternion setupOrientation;    //enemy will "rotate in" until it matches this
     private Quaternion aimRotation;         //hold a target rotation
-    private Transform targetTransform;
-
+    
     //flag for proper setup
     private bool readyUp = false;
 
@@ -25,20 +23,27 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
     //ray casting
     private LineRenderer line;
 
-    //***************************************************************************************************//
+    //audio
+    private AudioSource fireSound;
+    /****************************************************************************************************/
 
 
     // Use this for initialization
     void Start()
     {
         //get rigidbody ready, find the player, set up the transforms to face
-        rb = GetComponent<Rigidbody>();
+     
         target = GameObject.Find("PlayerShip");  //Seraphs will never aim at something that isn't the player
-        targetTransform = target.transform;     
+        if(target == null)
+        {
+            target = GameObject.Find("GameController"); //this is a cheat to aim at origin and prevent errors when the player is gone
+        }
+        
 
         line = GetComponentInChildren<LineRenderer>();
         line.enabled = false;                    //No firing yet
 
+        fireSound = GetComponent<AudioSource>();
 
         //determine our desired orientation and turn until facing it
         setupOrientation = Quaternion.Euler(0, 180, 0);
@@ -46,7 +51,7 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
 
 
         //find the Quaternion that will face the player for the first time
-        aimRotation = Quaternion.LookRotation(targetTransform.position - transform.position);
+        aimRotation = Quaternion.LookRotation(target.transform.position - transform.position);
 
         StopCoroutine("RotateIn"); //we don't have to do this anymore once it's finished
     }
@@ -81,10 +86,15 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
         else if (Time.time >= stopAiming && Time.time < stopCharging)
         {
         }
+        
         else if (Time.time >= stopCharging && Time.time < primaryFire.getNextFire())
         {
+            if(Time.time >= stopCharging && Time.time <= stopCharging + 0.02f)
+            {
+                fireSound.Play();
+            }
             line.enabled = true;
-          
+            
             line.material.mainTextureOffset = new Vector2(0, Time.time * 10); //spinning effect :D
             Ray ray = new Ray(transform.position, transform.forward); //make new ray
             RaycastHit hit; //holds what ever was impacted
@@ -108,7 +118,12 @@ public class SeraphRailBehavior : EnemyBehaviour //child of EnemyBehaviour class
             stopCharging = stopAiming + primaryFire.fireWait;
             primaryFire.setNextFire(stopCharging + primaryFire.fireDuration);  //Total time alloted is aimTime + fireDuration + fireWait
 
-            aimRotation = Quaternion.LookRotation(targetTransform.position - transform.position); //create a new aiming Rotation
+            target = GameObject.Find("PlayerShip");  //Seraphs will never aim at something that isn't the player
+            if (target == null)
+            {
+                target = GameObject.Find("GameController"); //this is a cheat to aim at origin and prevent errors when the player is gone
+            }
+            aimRotation = Quaternion.LookRotation(target.transform.position - transform.position); //create a new aiming Rotation
         }
     }
 }
